@@ -30,10 +30,35 @@ package com.challenge.easy.arrays;
 public class FindFirstPalindrome {
 
     public static String firstPalindrome(String[] words) {
-        return null;
+        for (final String currentWord : words) {
+            final int wordLen = currentWord.length();
+            int leftPtr = wordLen - 1;
+
+            for (int j = 0; j < wordLen; j++) {
+                if (currentWord.charAt(j) != currentWord.charAt(leftPtr)) {
+                    break;
+                }
+
+                // When we reach the middle this string is a palindrome
+                if (j == leftPtr) {
+                    return currentWord;
+                }
+                leftPtr--;
+            }
+        }
+        return "";
     }
 
     public static void main(String[] args) {
+        System.out.println("Starting FindFirstPalindrome");
 
+        String resp = firstPalindrome(new String[]{"abc", "car", "ada", "racecar", "cool"});
+        System.out.println("Response: " + resp);
+
+        resp = firstPalindrome(new String[]{"notapalindrome", "racecar"});
+        System.out.println("Response: " + resp);
+
+        resp = firstPalindrome(new String[]{"def","ghi"});
+        System.out.println("Response: " + resp);
     }
 }

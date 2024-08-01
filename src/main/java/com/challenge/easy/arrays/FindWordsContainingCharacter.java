@@ -1,5 +1,6 @@
 package com.challenge.easy.arrays;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,10 +37,37 @@ import java.util.List;
 public class FindWordsContainingCharacter {
 
     public static List<Integer> findWordsContaining(String[] words, char x) {
-        return null;
+        final List<Integer> resp = new ArrayList<>();
+
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].contains(x + "")) {
+                resp.add(i);
+            }
+        }
+
+        return resp;
     }
 
     public static void main(String[] args) {
+        System.out.println("Starting FindFirstPalindrome");
 
+        List<Integer> resp = findWordsContaining(new String[]{"leet","code"}, 'e'); // Resp: [0,1]
+        printArr(resp);
+
+        resp = findWordsContaining(new String[]{"abc","bcd","aaaa","cbc"}, 'a'); // Resp: [0,2]
+        printArr(resp);
+
+        resp = findWordsContaining(new String[]{"abc","bcd","aaaa","cbc"}, 'z'); // Resp: []
+        printArr(resp);
+    }
+
+    public static void printArr(List<Integer> positions) {
+        System.out.println("\n== Response ==");
+
+        System.out.print("[");
+        positions.forEach(position -> {
+            System.out.print(position + ",");
+        });
+        System.out.print("]");
     }
 }

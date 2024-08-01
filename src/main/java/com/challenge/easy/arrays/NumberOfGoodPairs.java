@@ -29,11 +29,33 @@ package com.challenge.easy.arrays;
  */
 public class NumberOfGoodPairs {
 
+    // nums[i] == nums[j] and i < j.
     public static int numIdenticalPairs(int[] nums) {
-        return 0;
+        int response = 0;
+        int numsLen = nums.length;
+
+        for (int i = 0; i < numsLen; i++) {
+            for (int j = i+1; j < numsLen; j++) {
+                if (nums[i] == nums[j]) {
+                    response++;
+                }
+            }
+        }
+
+        return response;
     }
 
     public static void main(String[] args) {
+        System.out.println("Starting FindFirstPalindrome");
+
+        int resp = numIdenticalPairs(new int[]{1,2,3,1,1,3}); // Resp: 4
+        System.out.println("Response: " + resp);
+
+        resp = numIdenticalPairs(new int[]{1,1,1,1}); // Resp: 6
+        System.out.println("Response: " + resp);
+
+        resp = numIdenticalPairs(new int[]{1,2,3}); // Resp: 0
+        System.out.println("Response: " + resp);
 
     }
 }
